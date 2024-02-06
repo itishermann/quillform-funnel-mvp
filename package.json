@@ -5,10 +5,11 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "funnel-onboard:dev": "turbo run dev --filter=funnel-onboard",
+    "funnel-onboard:build": "turbo run build --filter=funnel-onboard"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "prettier": "^3.1.1",
     "turbo": "latest"
