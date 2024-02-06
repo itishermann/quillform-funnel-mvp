@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@quillforms/blocks": "^4.1.4",
-    "@quillforms/react-renderer-utils": "^5.9.2",
-    "@quillforms/renderer-core": "^5.7.1",
+    "@quillforms/react-renderer-utils": "^5.10.0",
+    "@quillforms/renderer-core": "^5.8.0",
     "@repo/ui": "workspace:*",
     "next": "^14.0.4",
     "react": "^18.2.0",
