@@ -1,7 +1,20 @@
 # Funnel MVP
 An attempt to use QuillForms to replace current onboarding process.
 
-## Requirements
+## App Requirements
+- [x] The app should be able to create a form
+- [ ] The app should be able to send the form data step by step to the api
+- [x] The app should be able to display some kind of progress bar
+- [x] The app should be able to display the some inputs conditionally
+- [x] The form should be able to display a thank you message after the form is submitted
+- [x] The app should be able to display a loading spinner when an action is being performed
+- [x] The app should be able to display a message when an error occurs
+- [ ] The app should be able to display an stripe credit card collection input
+- [ ] The app should be able to display a date picker input
+- [ ] The app should be able to display a phone number input
+- [ ] The app should be able to display a calendar input with AM & PM options
+
+## Dependencies
 - pnpm
 - node 20 LTS
 - docker
