@@ -1,0 +1,137 @@
+[internal] load build definition from Dockerfile
+	transferring 1187/0 0.019
+[internal] load .dockerignore
+[internal] load metadata for docker.io/library/node:20-alpine
+[base 1/3] FROM docker.io/library/node:20-alpine
+[internal] load build context
+	transferring 18415624/0 21.701
+[runner 2/4] RUN addgroup --system --gid 1001 nodejs
+[builder 1/4] WORKDIR /app
+[runner 3/4] RUN adduser --system --uid 1001 nextjs
+[base 3/3] RUN corepack enable && corepack prepare pnpm@8.12.1 --activate
+[base 2/3] RUN apk update && apk upgrade && apk add --no-cache libc6-compat git
+[builder 2/4] RUN pnpm install -g turbo
+[builder 3/4] COPY . .
+[builder 4/4] RUN turbo prune --scope=funnel-onboard --docker
+
+	Attention:
+	Turborepo now collects completely anonymous telemetry regarding usage.
+	This information is used to shape the Turborepo roadmap and prioritize features.
+	You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+	https://turbo.build/repo/docs/telemetry
+
+	Generating pruned monorepo for funnel-onboard in /app/out
+	- Added @repo/typescript-config
+	- Added @repo/ui
+	- Added funnel-onboard
+[installer 2/6] COPY --from=builder /app/out/json/ .
+[installer 5/6] RUN pnpm install --frozen-lockfile
+[installer 4/6] COPY --from=builder /app/out/full .
+[installer 6/6] RUN pnpm turbo run build --filter="funnel-onboard"
+
+	Attention:
+	Turborepo now collects completely anonymous telemetry regarding usage.
+	This information is used to shape the Turborepo roadmap and prioritize features.
+	You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+	https://turbo.build/repo/docs/telemetry
+
+	â¢ Packages in scope: funnel-onboard
+	â¢ Running build in 1 packages
+	â¢ Remote caching disabled
+	funnel-onboard:build: cache miss, executing c65921b25e943fc9
+	funnel-onboard:build:
+	funnel-onboard:build: > funnel-onboard@1.0.0 build /app/apps/funnel-onboard
+	funnel-onboard:build: > next build
+	funnel-onboard:build:
+	funnel-onboard:build: Attention: Next.js now collects completely anonymous telemetry regarding usage.
+	funnel-onboard:build: This information is used to shape Next.js' roadmap and prioritize features.
+	funnel-onboard:build: You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+	funnel-onboard:build: https://nextjs.org/telemetry
+	funnel-onboard:build:
+	funnel-onboard:build:    Linting and checking validity of types ...
+	funnel-onboard:build:    â² Next.js 14.0.4
+	funnel-onboard:build:    - Experiments (use at your own risk):
+	funnel-onboard:build:      Â· outputFileTracingRoot
+	funnel-onboard:build:
+	funnel-onboard:build:    Creating an optimized production build ...
+	funnel-onboard:build: Failed to compile.
+	funnel-onboard:build:
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+blocklib-date-block@3.0.46_@babel+core@7.23.3_@types+node@20.10.6_@types+react@18_55b5znynxpntk6og363yj5vhoi/node_modules/@quillforms/blocklib-date-block/build/renderer/display.js
+	funnel-onboard:build: Module not found: Can't resolve 'tinyColor2'
+	funnel-onboard:build:
+	funnel-onboard:build: https://nextjs.org/docs/messages/module-not-found
+	funnel-onboard:build:
+	funnel-onboard:build: Import trace for requested module:
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+blocklib-date-block@3.0.46_@babel+core@7.23.3_@types+node@20.10.6_@types+react@18_55b5znynxpntk6og363yj5vhoi/node_modules/@quillforms/blocklib-date-block/build/renderer/settings.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/blocks/date.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/register-blocks.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/index.js
+	funnel-onboard:build: ./src/config/quillforms.ts
+	funnel-onboard:build: ./src/pages/_app.tsx
+	funnel-onboard:build:
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+blocklib-dropdown-block@3.0.46_@babel+core@7.23.3_@types+node@20.10.6_@types+reac_tvnyhty5keucnthffw33sdnjje/node_modules/@quillforms/blocklib-dropdown-block/build/renderer/choice-item.js
+	funnel-onboard:build: Module not found: Can't resolve 'tinyColor2'
+	funnel-onboard:build:
+	funnel-onboard:build: https://nextjs.org/docs/messages/module-not-found
+	funnel-onboard:build:
+	funnel-onboard:build: Import trace for requested module:
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+blocklib-dropdown-block@3.0.46_@babel+core@7.23.3_@types+node@20.10.6_@types+reac_tvnyhty5keucnthffw33sdnjje/node_modules/@quillforms/blocklib-dropdown-block/build/renderer/display.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+blocklib-dropdown-block@3.0.46_@babel+core@7.23.3_@types+node@20.10.6_@types+reac_tvnyhty5keucnthffw33sdnjje/node_modules/@quillforms/blocklib-dropdown-block/build/renderer/settings.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/blocks/dropdown.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/register-blocks.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/index.js
+	funnel-onboard:build: ./src/config/quillforms.ts
+	funnel-onboard:build: ./src/pages/_app.tsx
+	funnel-onboard:build:
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+blocklib-dropdown-block@3.0.46_@babel+core@7.23.3_@types+node@20.10.6_@types+reac_tvnyhty5keucnthffw33sdnjje/node_modules/@quillforms/blocklib-dropdown-block/build/renderer/display.js
+	funnel-onboard:build: Module not found: Can't resolve 'tinyColor2'
+	funnel-onboard:build:
+	funnel-onboard:build: https://nextjs.org/docs/messages/module-not-found
+	funnel-onboard:build:
+	funnel-onboard:build: Import trace for requested module:
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+blocklib-dropdown-block@3.0.46_@babel+core@7.23.3_@types+node@20.10.6_@types+reac_tvnyhty5keucnthffw33sdnjje/node_modules/@quillforms/blocklib-dropdown-block/build/renderer/settings.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/blocks/dropdown.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/register-blocks.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/index.js
+	funnel-onboard:build: ./src/config/quillforms.ts
+	funnel-onboard:build: ./src/pages/_app.tsx
+	funnel-onboard:build:
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+blocklib-email-block@3.0.46_@babel+core@7.23.3_@types+node@20.10.6_@types+react@1_gtqxtbbal3mxi7inab7rgehxpi/node_modules/@quillforms/blocklib-email-block/build/renderer/display.js
+	funnel-onboard:build: Module not found: Can't resolve 'tinyColor2'
+	funnel-onboard:build:
+	funnel-onboard:build: https://nextjs.org/docs/messages/module-not-found
+	funnel-onboard:build:
+	funnel-onboard:build: Import trace for requested module:
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+blocklib-email-block@3.0.46_@babel+core@7.23.3_@types+node@20.10.6_@types+react@1_gtqxtbbal3mxi7inab7rgehxpi/node_modules/@quillforms/blocklib-email-block/build/renderer/settings.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/blocks/email.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/register-blocks.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/index.js
+	funnel-onboard:build: ./src/config/quillforms.ts
+	funnel-onboard:build: ./src/pages/_app.tsx
+	funnel-onboard:build:
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+blocklib-long-text-block@3.0.46_@babel+core@7.23.3_@types+node@20.10.6_@types+rea_2hnwlkjoatgvvn255dcqhrdpzi/node_modules/@quillforms/blocklib-long-text-block/build/renderer/display.js
+	funnel-onboard:build: Module not found: Can't resolve 'tinyColor2'
+	funnel-onboard:build:
+	funnel-onboard:build: https://nextjs.org/docs/messages/module-not-found
+	funnel-onboard:build:
+	funnel-onboard:build: Import trace for requested module:
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+blocklib-long-text-block@3.0.46_@babel+core@7.23.3_@types+node@20.10.6_@types+rea_2hnwlkjoatgvvn255dcqhrdpzi/node_modules/@quillforms/blocklib-long-text-block/build/renderer/settings.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/blocks/long-text.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/register-blocks.js
+	funnel-onboard:build: ../../node_modules/.pnpm/@quillforms+react-renderer-utils@5.9.2_@babel+core@7.23.3_@emotion+react@11.11.3_@types+node@_bbdbpikebxscmlparqn65ba6n4/node_modules/@quillforms/react-renderer-utils/build-module/index.js
+	funnel-onboard:build: ./src/config/quillforms.ts
+	funnel-onboard:build: ./src/pages/_app.tsx
+	funnel-onboard:build:
+	funnel-onboard:build:
+	funnel-onboard:build: > Build failed because of webpack errors
+	funnel-onboard:build: âELIFECYCLEâ Command failed with exit code 1.
+	funnel-onboard:build: ERROR: command finished with error: command (/app/apps/funnel-onboard) /usr/local/bin/pnpm run build exited (1)
+	funnel-onboard#build: command (/app/apps/funnel-onboard) /usr/local/bin/pnpm run build exited (1)
+
+	Tasks:    0 successful, 1 total
+	Cached:    0 cached, 1 total
+	Time:    34.365s
+	Failed:    funnel-onboard#build
+
+	ERROR  run failed: command  exited (1)
+[installer 3/6] COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
